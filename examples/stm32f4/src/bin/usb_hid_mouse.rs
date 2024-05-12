@@ -30,6 +30,7 @@ async fn main(_spawner: Spawner) {
         use embassy_stm32::rcc::*;
         config.rcc.hse = Some(Hse {
             freq: Hertz(8_000_000),
+            // Changing this to HseMode::Oscillator may fix hangs on some boards
             mode: HseMode::Bypass,
         });
         config.rcc.pll_src = PllSource::HSE;
